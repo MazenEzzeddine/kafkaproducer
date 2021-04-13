@@ -11,6 +11,6 @@ ENV VERSION ${version}
 #COPY ./scripts/ /bin
 #COPY src/main/java/resources /bin/log4j2.properties
 
-ADD target/CodeP-1.0-SNAPSHOT.jar /
+ADD target/KafkaWorkload-1.0-SNAPSHOT.jar /
 
-CMD ["java", "-jar" ,  "/CodeP-1.0-SNAPSHOT.jar"]
+CMD ["java", "-jar" ,  "/KafkaWorkload-1.0-SNAPSHOT.jar"]
