@@ -4,11 +4,8 @@ package org.hps;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Properties;
@@ -23,9 +20,6 @@ public class KafkaProducerExample {
     private static Instant start = null;
 
     public static void main(String[] args) throws InterruptedException {
-
-
-
         KafkaProducerConfig config = KafkaProducerConfig.fromEnv();
 
         log.info(KafkaProducerConfig.class.getName() + ": {}", config.toString());
@@ -62,29 +56,19 @@ public class KafkaProducerExample {
             Instant now = Instant.now();
 
             long elapsedTime = Duration.between(start, now).toMinutes();
-            if(elapsedTime >= 2) {
+            if(elapsedTime <= 2) {
                 delay = 500;
-            }
-
-             if(elapsedTime >= 5) {
+            } else if( elapsedTime <= 5) {
                 delay = 333;
-            }
-
-             if(elapsedTime >= 7) {
+            } else if(elapsedTime <= 7) {
                 delay = 250;
-            }
-
-            if(elapsedTime >= 8) {
+            } else if(elapsedTime <= 8) {
+                // 10 messages per second.
                 delay = 100;
-            }
-
-            if(elapsedTime >= 9) {
+            } else if(elapsedTime <= 9) {
                 delay = 2000;
                 start = Instant.now();
             }
-
-
-
 
         }
         log.info("{} messages sent ...", numSent.get());

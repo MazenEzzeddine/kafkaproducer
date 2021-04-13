@@ -51,11 +51,8 @@ public class KafkaProducerConfig {
 
     public static Properties createProperties(KafkaProducerConfig config) {
         log.info("==================================================");
-
         log.info("Creating Properties");
         log.info("==================================================");
-
-
         Properties props = new Properties();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, config.getBootstrapServers());
         props.put(ProducerConfig.ACKS_CONFIG, config.getAcks());
@@ -75,10 +72,10 @@ public class KafkaProducerConfig {
                 props.put(key.trim(), value.trim());
             }
         }
-
-
         return props;
     }
+
+
     public String getBootstrapServers() {
         return bootstrapServers;
     }
